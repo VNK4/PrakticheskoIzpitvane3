@@ -10,7 +10,6 @@ namespace BusinessLayer
     public class Ammo
     {
         [Key]
-        
         public int ID { get; set; }
 
         [Required]
