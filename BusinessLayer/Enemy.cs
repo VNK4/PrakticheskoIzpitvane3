@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
+    public enum Behaviours
+    {
+        passive,
+        agressive,
+        neutral
+    }
+
     // ohh the misery 
     public class Enemy
     {
@@ -29,10 +36,10 @@ namespace BusinessLayer
         public bool IsBoss { get; set; }
 
         [Required]
-        public Enum Behaviour { get; set; }
+        public Behaviours Behaviour { get; set; }
 
         [Required]
-        public Enum WeakAgainst { get; set; }
+        public DamageTypes WeakAgainst { get; set; }
 
         public List<Weapon> Weapons { get; set; }
 
@@ -41,7 +48,7 @@ namespace BusinessLayer
 
         }
 
-        public Enemy(string name, string description, double health, double armor, bool isBoss, Enum behaviour, Enum weakAgainst)
+        public Enemy(string name, string description, double health, double armor, bool isBoss, Behaviours behaviour, DamageTypes weakAgainst)
         {
             Name = name;
             Description = description;
