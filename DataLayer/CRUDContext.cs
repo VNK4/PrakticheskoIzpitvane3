@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BusinessLayer;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,55 +21,41 @@ namespace DataLayer
 
         public void Create(T item)
         {
-            switch (dbSet.EntityType.ShortName())
-            {
-                case "Customer":
-                    break;
-                case "Product":
-                    break;
-                case "Order":
-                    break;
-                case "OrdersProductsQuantities":
-                    break;
-                default:
-                    throw new ArgumentException("Type not suported!");
-            }
-
             dbSet.Add(item);
             context.SaveChanges();
         }
 
         public void Delete(K key)
         {
-            dbSet.Remove(Read(key));
+            dbSet.Remove(Read(key, false));
             context.SaveChanges();
         }
 
-        public T Read(K key)
+        public T Read(K key, bool takeNavigationProperties)
         {
             switch (dbSet.EntityType.ShortName())
             {
                 case "Ammo":
-                    return context.Ammo.Find(key) as T;
+                    return takeNavigationProperties ? context.Ammo.Include(a => a.Weapons).SingleOrDefault(a => a.ID == Convert.ToInt32(key)) as T : context.Ammo.SingleOrDefault(a => a.ID == Convert.ToInt32(key)) as T;
                 case "Enemy":
-                    return context.Enemies.Find(key) as T;
+                    return takeNavigationProperties ? context.Enemies.Include(e => e.Weapons).SingleOrDefault(a => a.ID == Convert.ToInt32(key)) as T : context.Enemies.SingleOrDefault(a => a.ID == Convert.ToInt32(key)) as T;
                 case "Weapon":
-                    return context.Weapons.Find(key) as T;
+                    return takeNavigationProperties ? context.Weapons.Include(w => w.Ammo).SingleOrDefault(a => a.ID == Convert.ToInt32(key)) as T : context.Weapons.SingleOrDefault(a => a.ID == Convert.ToInt32(key)) as T;
                 default:
                     throw new ArgumentException("Type not suported!");
             }
         }
 
-        public IEnumerable<T> ReadAll()
+        public IEnumerable<T> ReadAll(bool takeNavigationProperties)
         {
             switch (dbSet.EntityType.ShortName())
             {
                 case "Ammo":
-                    return context.Ammo.ToList() as IEnumerable<T>;
+                    return takeNavigationProperties ? context.Ammo.Include(a => a.Weapons).ToList() as IEnumerable<T> : context.Ammo.ToList() as IEnumerable<T>;
                 case "Enemy":
-                    return context.Enemies.ToList() as IEnumerable<T>;
+                    return takeNavigationProperties ? context.Enemies.Include(e => e.Weapons).ToList() as IEnumerable<T> : context.Enemies.ToList() as IEnumerable<T>;
                 case "Weapon":
-                    return context.Weapons.ToList() as IEnumerable<T>;
+                    return takeNavigationProperties ? context.Weapons.Include(w => w.Ammo).ToList() as IEnumerable<T> : context.Weapons.ToList() as IEnumerable<T>;
                 default:
                     throw new ArgumentException("Type not suported!");
             }

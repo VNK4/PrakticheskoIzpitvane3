@@ -10,9 +10,9 @@ namespace DataLayer
     {
         void Create(T item);
 
-        T Read(K key);
+        T Read(K key, bool takeNavigationProperties);
 
-        IEnumerable<T> ReadAll();
+        IEnumerable<T> ReadAll(bool takeNavigationProperties);
 
         void Update(T item);
 
