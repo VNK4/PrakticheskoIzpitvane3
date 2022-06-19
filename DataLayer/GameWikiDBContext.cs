@@ -10,7 +10,11 @@ namespace DataLayer
 {
     public class GameWikiDBContext : DbContext
     {
-        public GameWikiDBContext() : base()
+        public GameWikiDBContext()
+        {
+            
+        }
+        public GameWikiDBContext(DbContextOptions options) : base(options)
         {
 
         }
