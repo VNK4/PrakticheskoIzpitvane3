@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
+    public enum Behaviours
+    {
+        passive,
+        agressive,
+        neutral
+    }
+
     // ohh the misery 
     public class Enemy
     {
@@ -29,19 +36,19 @@ namespace BusinessLayer
         public bool IsBoss { get; set; }
 
         [Required]
-        public Enum Behaviour { get; set; }
+        public Behaviours Behaviour { get; set; }
 
         [Required]
-        public Enum WeakAgainst { get; set; }
+        public DamageTypes WeakAgainst { get; set; }
 
-        public List<Weapon> Weapons { get; set; }
+        public IEnumerable<Weapon> Weapons { get; set; }
 
         private Enemy()
         {
 
         }
 
-        public Enemy(string name, string description, double health, double armor, bool isBoss, Enum behaviour, Enum weakAgainst)
+        public Enemy(string name, string description, double health, double armor, bool isBoss, Behaviours behaviour, DamageTypes weakAgainst)
         {
             Name = name;
             Description = description;
@@ -50,6 +57,21 @@ namespace BusinessLayer
             IsBoss = isBoss;
             Behaviour = behaviour;
             WeakAgainst = weakAgainst;
+            Weapons = new HashSet<Weapon>();
         }
+
+        public Enemy(int id, string name, string description, double health, double armor, bool isBoss, Behaviours behaviour, DamageTypes weakAgainst)
+            :this(name, description, health, armor, isBoss, behaviour, weakAgainst)
+        {
+            this.ID = id;
+        }
+
+        public Enemy(string name, string description, double health, double armor, bool isBoss, Behaviours behaviour, DamageTypes weakAgainst, IEnumerable<Weapon> weapons)
+            :this(name, description, health, armor, isBoss, behaviour, weakAgainst)
+        {
+            this.Weapons = weapons;
+        }
+
+
     }
 }

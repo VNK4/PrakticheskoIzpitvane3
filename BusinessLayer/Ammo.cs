@@ -22,21 +22,28 @@ namespace BusinessLayer
         public double Damage { get; set; }
 
         [Required]
-        public Enum DamageType { get; set; }
+        public DamageTypes DamageType { get; set; }
 
-        public List<Weapon> Weapons { get; set; }
+        public IEnumerable<Weapon> Weapons { get; set; }
 
         private Ammo()
         {
             
         }
 
-        public Ammo(string name, string description, double damage, Enum damageType)
+        public Ammo(string name, string description, double damage, DamageTypes damageType)
         {
             Name = name;
             Description = description;
             Damage = damage;
             DamageType = damageType;
+            Weapons = new HashSet<Weapon>();
         }
+        public Ammo(int id, string name, string description, double damage, DamageTypes damageType)
+            :this(name, description, damage, damageType)
+        {
+            this.ID = id;
+        }
+
     }
 }
