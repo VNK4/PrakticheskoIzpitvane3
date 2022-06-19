@@ -21,8 +21,12 @@ namespace DataLayer
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-79IUFLE\SQLEXPRESS;Database=OnlineShopDBv1E;Trusted_Connection=True;");
-            base.OnConfiguring(optionsBuilder); 
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(@"Server=DESKTOP-79IUFLE\SQLEXPRESS;Database=OnlineShopDBv1E;Trusted_Connection=True;");
+                base.OnConfiguring(optionsBuilder);
+            }
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

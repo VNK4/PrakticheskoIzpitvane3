@@ -14,7 +14,6 @@ namespace TestingLayer
     {
         private GameWikiDBContext dbContext;
         private CRUDContext<Ammo, int> ammoContext;
-        private DbSet<Ammo> dbSet;
         DbContextOptionsBuilder builder;
 
         [OneTimeSetUp]
@@ -30,7 +29,7 @@ namespace TestingLayer
             builder.UseInMemoryDatabase(Guid.NewGuid().ToString());
 
             dbContext = new GameWikiDBContext(builder.Options);
-            ammoContext = new CRUDContext<Ammo, int>(dbSet, dbContext);
+            ammoContext = new CRUDContext<Ammo, int>(dbContext.Ammo, dbContext);
         }
 
         [Test]
@@ -42,11 +41,10 @@ namespace TestingLayer
 
             int ammosAfter = ammoContext.ReadAll().Count();
 
-            Assert.IsTrue(ammosBefore != ammosAfter);
+            Assert.That(ammosAfter != ammosBefore);
         }
 
         [Test]
-        
         public void TestReadAmmo()
         {
             ammoContext.Create(new Ammo("testName", "testDescription", 443.5, DamageTypes.fire));
@@ -54,6 +52,37 @@ namespace TestingLayer
             Ammo ammo = ammoContext.Read(1);
 
             Assert.That(ammo != null);
+        }
+        
+        [Test]
+        public void TestUpdateAmmo()
+        {
+            ammoContext.Create(new Ammo("testName", "testDescription", 443.5, DamageTypes.fire));
+
+            Ammo ammo = ammoContext.Read(1);
+
+            ammo.Name = "testName2";
+
+            ammoContext.Update(ammo);
+
+            Ammo ammo2 = ammoContext.Read(1);
+
+            Assert.That(ammo2.Name == "testName2");
+        }
+
+        [Test]
+        
+        public void TestDeleteAmmo()
+        {
+            ammoContext.Create(new Ammo("testName", "testDescription", 443.5, DamageTypes.fire));
+
+            int ammosBefore = ammoContext.ReadAll().Count();
+
+            ammoContext.Delete(1);
+
+            int ammosAfter = ammoContext.ReadAll().Count();
+
+            Assert.That(ammosBefore != ammosAfter);
         }
     }
 }
