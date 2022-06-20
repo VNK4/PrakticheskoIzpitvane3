@@ -206,7 +206,7 @@ namespace PresentationLayerWF
                 Behaviours behaviour = (Behaviours)enemyDataGridView.Rows[e.RowIndex].Cells[5].Value;
                 DamageTypes weakAgainst = (DamageTypes)enemyDataGridView.Rows[e.RowIndex].Cells[6].Value;
 
-                selectedEnemy = enemies.First(p => p.Name == name);
+                selectedEnemy = enemies.Find(p => p.Name == name);
 
                 nameTxtBox.Text = name;
                 descriptionTxtBox.Text = description;

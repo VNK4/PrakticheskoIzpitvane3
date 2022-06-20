@@ -145,7 +145,7 @@ namespace PresentationLayerWF
                 double damage = Convert.ToDouble(ammoDataGridView.Rows[e.RowIndex].Cells[2].Value);
                 DamageTypes damageType = (DamageTypes)ammoDataGridView.Rows[e.RowIndex].Cells[3].Value;
 
-                selectedAmmo = ammo.First(p => p.Name == name);
+                selectedAmmo = ammo.Find(p => p.Name == name);
                 
 
                 nameBox.Text = name;

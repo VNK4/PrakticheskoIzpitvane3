@@ -180,7 +180,7 @@ namespace PresentationLayerWF
                 float damageMultiplier = (float)weaponDataGridView.Rows[e.RowIndex].Cells[2].Value;
 
 
-                selectedWeapon = weapons.First(p => p.Name == name);
+                selectedWeapon = weapons.Find(p => p.Name == name);
 
                 nameTxtBox.Text = name;
                 descriptionTxtBox.Text = description;
