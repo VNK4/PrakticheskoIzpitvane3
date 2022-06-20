@@ -168,11 +168,7 @@ namespace PresentationLayerWF
 
                         enemyContext.Update(selectedEnemy);
 
-                        LoadEnemies();
-                        LoadWeapon();
-
-                        MessageBox.Show(string.Format("{0} added successfully!", selectedWeapon.Name),
-                            ":)", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(string.Format("{0} added successfully!", selectedWeapon.Name), "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
