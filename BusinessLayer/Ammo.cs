@@ -22,7 +22,7 @@ namespace BusinessLayer
         public double Damage { get; set; }
 
         [Required]
-        public Enum DamageType { get; set; }
+        public DamageTypes DamageType { get; set; }
 
         public List<Weapon> Weapons { get; set; }
 
@@ -31,7 +31,7 @@ namespace BusinessLayer
             
         }
 
-        public Ammo(string name, string description, double damage, Enum damageType)
+        public Ammo(string name, string description, double damage, DamageTypes damageType)
         {
             Name = name;
             Description = description;
