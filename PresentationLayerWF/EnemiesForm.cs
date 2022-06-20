@@ -35,7 +35,7 @@ namespace PresentationLayerWF
 
             LoadHeaderRow();
             LoadEnemies();
-            LoadWeapon();
+            
 
         }
 
