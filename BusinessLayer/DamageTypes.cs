@@ -8,6 +8,7 @@ namespace BusinessLayer
 {
     public enum DamageTypes
     {
+        none,
         lightning,
         fire,
         ice

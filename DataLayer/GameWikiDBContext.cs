@@ -10,6 +10,7 @@ namespace DataLayer
 {
     public class GameWikiDBContext : DbContext
     {
+
         public GameWikiDBContext()
         {
             
@@ -26,7 +27,6 @@ namespace DataLayer
                 optionsBuilder.UseSqlServer(@"Server=DESKTOP-79IUFLE\SQLEXPRESS;Database=OnlineShopDBv1E;Trusted_Connection=True;");
                 base.OnConfiguring(optionsBuilder);
             }
-            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

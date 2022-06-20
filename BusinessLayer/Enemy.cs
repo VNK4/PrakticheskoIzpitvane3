@@ -41,7 +41,7 @@ namespace BusinessLayer
         [Required]
         public DamageTypes WeakAgainst { get; set; }
 
-        public List<Weapon> Weapons { get; set; }
+        public IEnumerable<Weapon> Weapons { get; set; }
 
         private Enemy()
         {
@@ -57,6 +57,21 @@ namespace BusinessLayer
             IsBoss = isBoss;
             Behaviour = behaviour;
             WeakAgainst = weakAgainst;
+            Weapons = new HashSet<Weapon>();
         }
+
+        public Enemy(int id, string name, string description, double health, double armor, bool isBoss, Behaviours behaviour, DamageTypes weakAgainst)
+            :this(name, description, health, armor, isBoss, behaviour, weakAgainst)
+        {
+            this.ID = id;
+        }
+
+        public Enemy(string name, string description, double health, double armor, bool isBoss, Behaviours behaviour, DamageTypes weakAgainst, IEnumerable<Weapon> weapons)
+            :this(name, description, health, armor, isBoss, behaviour, weakAgainst)
+        {
+            this.Weapons = weapons;
+        }
+
+
     }
 }

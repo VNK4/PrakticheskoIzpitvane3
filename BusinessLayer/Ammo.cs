@@ -24,7 +24,7 @@ namespace BusinessLayer
         [Required]
         public DamageTypes DamageType { get; set; }
 
-        public List<Weapon> Weapons { get; set; }
+        public IEnumerable<Weapon> Weapons { get; set; }
 
         private Ammo()
         {
@@ -37,6 +37,13 @@ namespace BusinessLayer
             Description = description;
             Damage = damage;
             DamageType = damageType;
+            Weapons = new HashSet<Weapon>();
         }
+        public Ammo(int id, string name, string description, double damage, DamageTypes damageType)
+            :this(name, description, damage, damageType)
+        {
+            this.ID = id;
+        }
+
     }
 }
