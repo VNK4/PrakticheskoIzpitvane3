@@ -281,6 +281,22 @@
             this.behaviourBox.Size = new System.Drawing.Size(149, 28);
             this.behaviourBox.TabIndex = 24;
             // 
+            // enemyBindingSource
+            // 
+            this.enemyBindingSource.DataSource = typeof(BusinessLayer.Enemy);
+            // 
+            // enemyBindingSource2
+            // 
+            this.enemyBindingSource2.DataSource = typeof(BusinessLayer.Enemy);
+            // 
+            // enemyBindingSource3
+            // 
+            this.enemyBindingSource3.DataSource = typeof(BusinessLayer.Enemy);
+            // 
+            // enemyBindingSource1
+            // 
+            this.enemyBindingSource1.DataSource = typeof(BusinessLayer.Enemy);
+            // 
             // resetBtn
             // 
             this.resetBtn.Location = new System.Drawing.Point(42, 417);
