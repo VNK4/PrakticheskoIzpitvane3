@@ -27,11 +27,11 @@ namespace DataLayer
 
         public void Delete(K key)
         {
-            dbSet.Remove(Read(key, false));
+            dbSet.Remove(Read(key));
             context.SaveChanges();
         }
 
-        public T Read(K key, bool takeNavigationProperties)
+        public T Read(K key, bool takeNavigationProperties = false)
         {
             switch (dbSet.EntityType.ShortName())
             {
@@ -46,7 +46,7 @@ namespace DataLayer
             }
         }
 
-        public IEnumerable<T> ReadAll(bool takeNavigationProperties)
+        public IEnumerable<T> ReadAll(bool takeNavigationProperties = false)
         {
             switch (dbSet.EntityType.ShortName())
             {

@@ -21,8 +21,7 @@ namespace BusinessLayer
         [Required]
         public float DamageMultiplier { get; set; }
 
-        [Required]
-        public Ammo Ammo { get; set; }
+        public List<Ammo> Ammo { get; set; }
 
         public List<Enemy> Enemies { get; set; }
 
@@ -31,12 +30,11 @@ namespace BusinessLayer
             
         }
 
-        public Weapon(string name, string description, float damageMultiplier, Ammo ammo)
+        public Weapon(string name, string description, float damageMultiplier)
         {
             Name = name;
             Description = description;
             DamageMultiplier = damageMultiplier;
-            Ammo = ammo;
         }
     }
 }
