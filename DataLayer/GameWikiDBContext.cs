@@ -17,7 +17,7 @@ namespace DataLayer
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=IVAN-VIPER\SQLEXPRESS; Database=GameWikiDbTest1;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=IVAN-VIPER\SQLEXPRESS; Database=GameWikiDbTest2;Trusted_Connection=True;");
             base.OnConfiguring(optionsBuilder); 
         }
 

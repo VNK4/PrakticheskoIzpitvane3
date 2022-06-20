@@ -164,7 +164,7 @@
             this.label7.Size = new System.Drawing.Size(79, 15);
             this.label7.TabIndex = 15;
             this.label7.Text = "Weak Against";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+            
             // 
             // label3
             // 
@@ -243,7 +243,7 @@
             this.label8.Size = new System.Drawing.Size(60, 15);
             this.label8.TabIndex = 23;
             this.label8.Text = "Behaviour";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
+            
             // 
             // weakAgainstBox
             // 

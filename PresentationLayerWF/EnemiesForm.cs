@@ -168,6 +168,9 @@ namespace PresentationLayerWF
 
                         enemyContext.Update(selectedEnemy);
 
+                        LoadEnemies();
+                        LoadWeapon();
+
                         MessageBox.Show(string.Format("{0} added successfully!", selectedWeapon.Name),
                             ":)", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -247,7 +250,7 @@ namespace PresentationLayerWF
 
         private void LoadEnemies()
         {
-            enemies = enemyContext.ReadAll().ToList();
+            enemies = enemyContext.ReadAll(true).ToList();
 
             foreach (Enemy item in enemies)
             {
@@ -272,7 +275,7 @@ namespace PresentationLayerWF
 
         private void LoadWeapon()
         {
-            weaponsListBox.DataSource = weaponContext.ReadAll();
+            weaponsListBox.DataSource = weaponContext.ReadAll(true);
 
             weaponsListBox.DisplayMember = "Name";
             weaponsListBox.ValueMember = "ID";

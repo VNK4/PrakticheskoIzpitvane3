@@ -104,6 +104,7 @@
             // 
             // damageTypeBox
             // 
+            this.damageTypeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.damageTypeBox.FormattingEnabled = true;
             this.damageTypeBox.Location = new System.Drawing.Point(103, 99);
             this.damageTypeBox.Name = "damageTypeBox";

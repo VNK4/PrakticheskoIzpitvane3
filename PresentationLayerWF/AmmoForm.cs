@@ -143,15 +143,15 @@ namespace PresentationLayerWF
                 string name = ammoDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
                 string description = ammoDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
                 double damage = Convert.ToDouble(ammoDataGridView.Rows[e.RowIndex].Cells[2].Value);
+                DamageTypes damageType = (DamageTypes)ammoDataGridView.Rows[e.RowIndex].Cells[3].Value;
 
                 selectedAmmo = ammo.First(p => p.Name == name);
-                //may need to be ID
+                
 
                 nameBox.Text = name;
                 descriptionBox.Text = description;
                 damageBox.Value = Convert.ToDecimal(damage);
-                //TODO: add damagetype
-                //damaTypeBox.SelectedValue = selectedAmmo.DamageType;
+                damageTypeBox.SelectedItem = damageType;
 
                 selectedRowIndex = e.RowIndex;
 
@@ -174,7 +174,7 @@ namespace PresentationLayerWF
 
         private void LoadAmmo() 
         {
-            ammo = ammoContext.ReadAll().ToList();
+            ammo = ammoContext.ReadAll(true).ToList();
 
             foreach (Ammo item in ammo)
             {

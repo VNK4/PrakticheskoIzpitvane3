@@ -110,6 +110,7 @@
             this.ammoListBox.Name = "ammoListBox";
             this.ammoListBox.Size = new System.Drawing.Size(96, 184);
             this.ammoListBox.TabIndex = 7;
+            this.ammoListBox.SelectedValueChanged += new System.EventHandler(this.ammoListBox_SelectedValueChanged);
             // 
             // weaponDataGridView
             // 

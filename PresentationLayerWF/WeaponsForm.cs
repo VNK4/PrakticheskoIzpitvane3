@@ -118,7 +118,9 @@ namespace PresentationLayerWF
                 {
                     weaponContext.Delete(selectedWeapon.ID);
 
-                    DeleteweaponRow();
+                    MessageBox.Show("Weapon deleted successfully!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    DeleteWeaponRow();
 
                     ClearData();
                 }
@@ -147,6 +149,9 @@ namespace PresentationLayerWF
                     if (!((HashSet<Ammo>)selectedWeapon.Ammo).Contains(selectedAmmo)) 
                     {
                         ((HashSet<Ammo>)selectedWeapon.Ammo).Add(selectedAmmo);
+
+                        weaponContext.Update(selectedWeapon);
+
                         MessageBox.Show(string.Format("{0} added successfully!", selectedAmmo.Name),
                             ":)", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -172,13 +177,16 @@ namespace PresentationLayerWF
             {
                 string name = weaponDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
                 string description = weaponDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
-                //float damageMultiplier = weaponDataGridView.Rows[e.RowIndex].Cells[2].Value.Parse(float);
+                float damageMultiplier = (float)weaponDataGridView.Rows[e.RowIndex].Cells[2].Value;
 
-                //selectedWeapon = weapons.First(p => p.ID == id);
+
+                selectedWeapon = weapons.First(p => p.Name == name);
 
                 nameTxtBox.Text = name;
                 descriptionTxtBox.Text = description;
-                //damageMultiplierBox.Value = (decimal)damageMultiplier;
+                damageMultiplierBox.Value = (decimal)damageMultiplier;
+
+                selectedRowIndex = e.RowIndex;
 
             }
         }
@@ -206,7 +214,7 @@ namespace PresentationLayerWF
 
         private void LoadWeapons() 
         { 
-            weapons = weaponContext.ReadAll().ToList();
+            weapons = weaponContext.ReadAll(true).ToList();
 
             foreach (Weapon item in weapons)
             {
@@ -218,8 +226,8 @@ namespace PresentationLayerWF
 
                 if (item.Ammo != null)
                 {
-                    row.Cells[3].Value = string.Join(", ",item.Ammo);
-                    //Dali kata shte stane?
+                    row.Cells[3].Value = string.Join(", ",item.Ammo.Select(c => c.Name));
+                    
                 }
 
                 if (item.Enemies != null)
@@ -232,7 +240,7 @@ namespace PresentationLayerWF
         }
         private void LoadAmmo()
         {
-            ammoListBox.DataSource = ammoContext.ReadAll();
+            ammoListBox.DataSource = ammoContext.ReadAll(true);
 
             ammoListBox.DisplayMember = "Name";
             ammoListBox.ValueMember = "ID";
@@ -268,7 +276,7 @@ namespace PresentationLayerWF
             weaponDataGridView.Rows[selectedRowIndex].Cells[3].Value = selectedWeapon.Ammo;
         }
 
-        private void DeleteweaponRow() 
+        private void DeleteWeaponRow() 
         {
             weaponDataGridView.Rows.RemoveAt(selectedRowIndex);
         }
