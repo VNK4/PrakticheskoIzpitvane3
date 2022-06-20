@@ -75,7 +75,7 @@ namespace PresentationLayerWF
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: Счупи са!", ":[", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Error: Счупи са!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -105,7 +105,7 @@ namespace PresentationLayerWF
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                MessageBox.Show("Error: broke", ":(", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Error: broke", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
            
         }
@@ -157,7 +157,7 @@ namespace PresentationLayerWF
                     }
                     else
                     {
-                        MessageBox.Show("This ammo is added to this weapon!", ":)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("This ammo is added to this weapon!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else

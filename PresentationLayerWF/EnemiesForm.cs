@@ -118,7 +118,7 @@ namespace PresentationLayerWF
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                MessageBox.Show("Error: broke", ":(", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Error: broke", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
 
@@ -176,14 +176,14 @@ namespace PresentationLayerWF
                     }
                     else
                     {
-                        MessageBox.Show("This weapon is already added to favourites!", ":)", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("This weapon is already added to favourites!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
 
                 }
                 else
                 {
-                    MessageBox.Show("You must choose Enemy and weapon!", ":|", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("You must choose Enemy and weapon!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -346,7 +346,7 @@ namespace PresentationLayerWF
         #endregion
 
 
-        #region TODO: Delete these shits here
+        #region TODO: Delete these here
         private void label7_Click(object sender, EventArgs e)
         {
 

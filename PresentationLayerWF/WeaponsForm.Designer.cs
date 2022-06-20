@@ -51,82 +51,83 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 15);
+            this.label1.Size = new System.Drawing.Size(49, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 65);
+            this.label2.Location = new System.Drawing.Point(5, 65);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 15);
+            this.label2.Size = new System.Drawing.Size(85, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Description";
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(12, 96);
+            this.label3.Location = new System.Drawing.Point(12, 98);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 33);
+            this.label3.Size = new System.Drawing.Size(67, 27);
             this.label3.TabIndex = 2;
             this.label3.Text = "Damage \r\nMultiplier";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(245, 13);
+            this.label4.Location = new System.Drawing.Point(245, 8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 15);
+            this.label4.Size = new System.Drawing.Size(54, 20);
             this.label4.TabIndex = 3;
             this.label4.Text = "Ammo";
             // 
             // nameTxtBox
             // 
-            this.nameTxtBox.Location = new System.Drawing.Point(85, 31);
+            this.nameTxtBox.Location = new System.Drawing.Point(96, 32);
             this.nameTxtBox.Name = "nameTxtBox";
-            this.nameTxtBox.Size = new System.Drawing.Size(143, 23);
+            this.nameTxtBox.Size = new System.Drawing.Size(143, 27);
             this.nameTxtBox.TabIndex = 4;
             // 
             // descriptionTxtBox
             // 
-            this.descriptionTxtBox.Location = new System.Drawing.Point(85, 65);
+            this.descriptionTxtBox.Location = new System.Drawing.Point(96, 65);
             this.descriptionTxtBox.Name = "descriptionTxtBox";
-            this.descriptionTxtBox.Size = new System.Drawing.Size(143, 23);
+            this.descriptionTxtBox.Size = new System.Drawing.Size(143, 27);
             this.descriptionTxtBox.TabIndex = 5;
             // 
             // damageMultiplierBox
             // 
-            this.damageMultiplierBox.Location = new System.Drawing.Point(85, 96);
+            this.damageMultiplierBox.Location = new System.Drawing.Point(96, 98);
             this.damageMultiplierBox.Name = "damageMultiplierBox";
-            this.damageMultiplierBox.Size = new System.Drawing.Size(143, 23);
+            this.damageMultiplierBox.Size = new System.Drawing.Size(143, 27);
             this.damageMultiplierBox.TabIndex = 6;
             // 
             // ammoListBox
             // 
             this.ammoListBox.FormattingEnabled = true;
-            this.ammoListBox.ItemHeight = 15;
+            this.ammoListBox.ItemHeight = 20;
             this.ammoListBox.Location = new System.Drawing.Point(245, 31);
             this.ammoListBox.Name = "ammoListBox";
-            this.ammoListBox.Size = new System.Drawing.Size(96, 184);
+            this.ammoListBox.Size = new System.Drawing.Size(131, 464);
             this.ammoListBox.TabIndex = 7;
             this.ammoListBox.SelectedValueChanged += new System.EventHandler(this.ammoListBox_SelectedValueChanged);
             // 
             // weaponDataGridView
             // 
             this.weaponDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.weaponDataGridView.Location = new System.Drawing.Point(347, 31);
+            this.weaponDataGridView.Location = new System.Drawing.Point(382, 31);
             this.weaponDataGridView.Name = "weaponDataGridView";
+            this.weaponDataGridView.RowHeadersWidth = 51;
             this.weaponDataGridView.RowTemplate.Height = 25;
-            this.weaponDataGridView.Size = new System.Drawing.Size(503, 455);
+            this.weaponDataGridView.Size = new System.Drawing.Size(468, 464);
             this.weaponDataGridView.TabIndex = 8;
             this.weaponDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.weaponDataGridView_CellClick);
             // 
             // createBtn
             // 
-            this.createBtn.Location = new System.Drawing.Point(12, 214);
+            this.createBtn.Location = new System.Drawing.Point(21, 444);
             this.createBtn.Name = "createBtn";
-            this.createBtn.Size = new System.Drawing.Size(75, 23);
+            this.createBtn.Size = new System.Drawing.Size(75, 33);
             this.createBtn.TabIndex = 9;
             this.createBtn.Text = "Create";
             this.createBtn.UseVisualStyleBackColor = true;
@@ -134,9 +135,9 @@
             // 
             // updateBtn
             // 
-            this.updateBtn.Location = new System.Drawing.Point(93, 214);
+            this.updateBtn.Location = new System.Drawing.Point(147, 444);
             this.updateBtn.Name = "updateBtn";
-            this.updateBtn.Size = new System.Drawing.Size(75, 23);
+            this.updateBtn.Size = new System.Drawing.Size(75, 33);
             this.updateBtn.TabIndex = 10;
             this.updateBtn.Text = "Update";
             this.updateBtn.UseVisualStyleBackColor = true;
@@ -144,9 +145,9 @@
             // 
             // addAmmoBtn
             // 
-            this.addAmmoBtn.Location = new System.Drawing.Point(257, 221);
+            this.addAmmoBtn.Location = new System.Drawing.Point(257, 501);
             this.addAmmoBtn.Name = "addAmmoBtn";
-            this.addAmmoBtn.Size = new System.Drawing.Size(75, 23);
+            this.addAmmoBtn.Size = new System.Drawing.Size(75, 31);
             this.addAmmoBtn.TabIndex = 11;
             this.addAmmoBtn.Text = "Add";
             this.addAmmoBtn.UseVisualStyleBackColor = true;
@@ -154,9 +155,9 @@
             // 
             // deleteBtn
             // 
-            this.deleteBtn.Location = new System.Drawing.Point(52, 243);
+            this.deleteBtn.Location = new System.Drawing.Point(84, 483);
             this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(75, 23);
+            this.deleteBtn.Size = new System.Drawing.Size(75, 32);
             this.deleteBtn.TabIndex = 12;
             this.deleteBtn.Text = "Delete";
             this.deleteBtn.UseVisualStyleBackColor = true;
@@ -166,7 +167,7 @@
             // 
             this.exitBtn.Location = new System.Drawing.Point(767, 504);
             this.exitBtn.Name = "exitBtn";
-            this.exitBtn.Size = new System.Drawing.Size(75, 23);
+            this.exitBtn.Size = new System.Drawing.Size(75, 27);
             this.exitBtn.TabIndex = 13;
             this.exitBtn.Text = "Exit";
             this.exitBtn.UseVisualStyleBackColor = true;
@@ -191,6 +192,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "WeaponsForm";
+            this.Text = "Weapons";
             ((System.ComponentModel.ISupportInitialize)(this.damageMultiplierBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.weaponDataGridView)).EndInit();
             this.ResumeLayout(false);

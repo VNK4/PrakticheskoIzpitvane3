@@ -102,7 +102,7 @@ namespace PresentationLayerWF
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                MessageBox.Show("Error: broke", ":(", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Error: broke", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -114,7 +114,7 @@ namespace PresentationLayerWF
                 {
                     ammoContext.Delete(selectedAmmo.ID);
 
-                    MessageBox.Show("Ammo deleted successfully!", ":]", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Ammo deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     DeleteAmmoRow();
 
@@ -127,7 +127,7 @@ namespace PresentationLayerWF
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, ": |", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
