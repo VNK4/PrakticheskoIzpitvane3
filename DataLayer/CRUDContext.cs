@@ -27,7 +27,7 @@ namespace DataLayer
 
         public void Delete(K key)
         {
-            dbSet.Remove(Read(key, false));
+            dbSet.Remove(Read(key));
             context.SaveChanges();
         }
 

@@ -10,15 +10,23 @@ namespace DataLayer
 {
     public class GameWikiDBContext : DbContext
     {
-        public GameWikiDBContext() : base()
+
+        public GameWikiDBContext()
+        {
+            
+        }
+        public GameWikiDBContext(DbContextOptions options) : base(options)
         {
 
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=IVAN-VIPER\SQLEXPRESS; Database=GameWikiDbTest2;Trusted_Connection=True;");
-            base.OnConfiguring(optionsBuilder); 
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(@"Server=DESKTOP-79IUFLE\SQLEXPRESS;Database=OnlineShopDBv1E;Trusted_Connection=True;");
+                base.OnConfiguring(optionsBuilder);
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
