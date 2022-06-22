@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using DataLayer;
+using System.Media;
 
 namespace PresentationLayerWF
 {
@@ -29,6 +30,8 @@ namespace PresentationLayerWF
 
             LoadHeaderRow();
             LoadAmmo();
+            SoundPlayer enterSound = new SoundPlayer(@"C:\Users\Ivan\Desktop\Testizpit\Sound\ammoFormSound.wav");
+            enterSound.Play();
 
         }
         #region Events
@@ -69,7 +72,7 @@ namespace PresentationLayerWF
             catch (Exception ex)
             {
 
-                MessageBox.Show("TODO", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -134,6 +137,12 @@ namespace PresentationLayerWF
         private void exitBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void clearBtn_Click(object sender, EventArgs e)
+        {
+            ClearData();
+
         }
 
         private void ammoDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -246,5 +255,10 @@ namespace PresentationLayerWF
         }
 
         #endregion
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

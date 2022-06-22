@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using DataLayer;
+using System.Media;
 
 
 namespace PresentationLayerWF
@@ -36,7 +37,9 @@ namespace PresentationLayerWF
             LoadWeapons();
             LoadAmmo();
 
-            
+            SoundPlayer enterSound = new SoundPlayer(@"C:\Users\Ivan\Desktop\Testizpit\Sound\weaponFormSound.wav");
+            enterSound.Play();
+
         }
 
         #region Events
@@ -167,10 +170,15 @@ namespace PresentationLayerWF
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+        private void clearBtn_Click(object sender, EventArgs e)
+        {
+            ClearData();
+
+        }
+
         private void weaponDataGridView_CellClick(object sender, DataGridViewCellEventArgs e) 
         {
             if (e.RowIndex != -1 && e.ColumnIndex != -1)

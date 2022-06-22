@@ -24,7 +24,7 @@ namespace DataLayer
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Server=DESKTOP-79IUFLE\SQLEXPRESS;Database=GameWikiDB;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(@"Server=IVAN-VIPER\SQLEXPRESS; Database=TESTGAMEWIKI1;Trusted_Connection=True;");
                 base.OnConfiguring(optionsBuilder);
             }
         }

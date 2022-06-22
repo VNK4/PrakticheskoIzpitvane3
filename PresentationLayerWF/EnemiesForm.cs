@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using DataLayer;
+using System.Media;
 
 namespace PresentationLayerWF
 {
@@ -35,7 +36,10 @@ namespace PresentationLayerWF
 
             LoadHeaderRow();
             LoadEnemies();
-            
+            LoadWeapon();
+
+            SoundPlayer enterSound = new SoundPlayer(@"C:\Users\Ivan\Desktop\Testizpit\Sound\enemyFormSound.wav");
+            enterSound.Play();
 
         }
 
@@ -84,7 +88,7 @@ namespace PresentationLayerWF
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: Счупи са!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -145,7 +149,7 @@ namespace PresentationLayerWF
             catch (Exception ex)
             {
 
-                throw ex;
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -167,6 +171,7 @@ namespace PresentationLayerWF
                         ((HashSet<Weapon>)selectedEnemy.Weapons).Add(selectedWeapon);
 
                         enemyContext.Update(selectedEnemy);
+                        
 
                         MessageBox.Show(string.Format("{0} added successfully!", selectedWeapon.Name), "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -185,37 +190,51 @@ namespace PresentationLayerWF
             catch (Exception ex)
             {
 
-                throw ex;
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void clearBtn_Click(object sender, EventArgs e)
+        {
+            ClearData();
+            
         }
 
         private void enemyDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1 && e.ColumnIndex != -1)
+            try
             {
-                string name = enemyDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
-                string description = enemyDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
-                double health = Convert.ToDouble(enemyDataGridView.Rows[e.RowIndex].Cells[2].Value);
-                double armor = Convert.ToDouble(enemyDataGridView.Rows[e.RowIndex].Cells[3].Value);
-                bool isBoss = Convert.ToBoolean(enemyDataGridView.Rows[e.RowIndex].Cells[4].Value);
+                if (e.RowIndex != -1 && e.ColumnIndex != -1)
+                {
+                    string name = enemyDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    string description = enemyDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    double health = Convert.ToDouble(enemyDataGridView.Rows[e.RowIndex].Cells[2].Value);
+                    double armor = Convert.ToDouble(enemyDataGridView.Rows[e.RowIndex].Cells[3].Value);
+                    bool isBoss = Convert.ToBoolean(enemyDataGridView.Rows[e.RowIndex].Cells[4].Value);
 
-                Behaviours behaviour = (Behaviours)enemyDataGridView.Rows[e.RowIndex].Cells[5].Value;
-                DamageTypes weakAgainst = (DamageTypes)enemyDataGridView.Rows[e.RowIndex].Cells[6].Value;
+                    Behaviours behaviour = (Behaviours)enemyDataGridView.Rows[e.RowIndex].Cells[5].Value;
+                    DamageTypes weakAgainst = (DamageTypes)enemyDataGridView.Rows[e.RowIndex].Cells[6].Value;
 
-                selectedEnemy = enemies.Find(p => p.Name == name);
+                    selectedEnemy = enemies.Find(p => p.Name == name);
 
-                nameTxtBox.Text = name;
-                descriptionTxtBox.Text = description;
-                healthBox.Value = Convert.ToDecimal(health);
-                armorBox.Value = Convert.ToDecimal(armor);
-                isBossBox.Checked = isBoss;
-                behaviourBox.SelectedItem = behaviour;
-                weakAgainstBox.SelectedItem = weakAgainst;
+                    nameTxtBox.Text = name;
+                    descriptionTxtBox.Text = description;
+                    healthBox.Value = Convert.ToDecimal(health);
+                    armorBox.Value = Convert.ToDecimal(armor);
+                    isBossBox.Checked = isBoss;
+                    behaviourBox.SelectedItem = behaviour;
+                    weakAgainstBox.SelectedItem = weakAgainst;
 
 
-                selectedRowIndex = e.RowIndex;
+                    selectedRowIndex = e.RowIndex;
 
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }      
+            
 
         }
 
@@ -355,10 +374,6 @@ namespace PresentationLayerWF
 
         #endregion
 
-        private void resetBtn_Click(object sender, EventArgs e)
-        {
-            ClearData();
-            createBtn.Enabled = true;
-        }
+        
     }
 }
